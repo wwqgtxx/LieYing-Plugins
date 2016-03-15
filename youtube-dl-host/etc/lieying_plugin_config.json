@@ -1,0 +1,12 @@
+{
+	"__note__" : "lieying_plugin/youtube-dl config file", 
+	
+	"youtube_dl_main_bin" : "youtube-dl/youtube_dl", 
+	"http_proxy" : null, 
+	
+	"youtube_dl_re_list_file" : "./etc/youtube_dl_re_list.json", 
+	
+	"__note__" : "end lieying_plugin_config.json"
+}
+
+
