@@ -35,12 +35,13 @@ def convertVideo( info ):
     else:
         for f in formats:
             ext = f.get('ext','')
+            url = f.get('url','')
             data.append({
                 'label' : '单段_%s_%s' %  (f.get('format','') or f.get('format_id','未知'), ext.upper() ),
                 'size' : formatSize( f.get('filesize',0) ),
                 'download' : [{
-                    'protocol' : f.get('protocol', 'http'),
-                    'urls' : [ f.get('url','') ],
+                    'protocol' : f.get('protocol', url[:url.find(':')]),
+                    'urls' : [ url ],
                     'duration' : f.get('duration',''),
                     'args' : f.get('http_headers',''),
                     'length' : f.get('filesize',0)

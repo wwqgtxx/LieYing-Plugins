@@ -2,6 +2,8 @@ from . import convert
 
 from .YtDown.youtube_dl import YoutubeDL
 
+import logging
+
 def GetVersion():
     return {
         'port_version' : "0.4.0",
@@ -53,12 +55,12 @@ def Parse( url ):
         'playlistend': None,
         'playlistreverse': False,
         'noplaylist': False,
-        'logtostderr': True,
+        'logtostderr': False,
         'consoletitle': None,
         'nopart': False,
         'updatetime': None,
-        'writedescription': True,
-        'writeannotations': True,
+        'writedescription': False,
+        'writeannotations': False,
         'writeinfojson': False,
         'writethumbnail': True,
         'write_all_thumbnails': False,
@@ -91,8 +93,8 @@ def Parse( url ):
         'prefer_insecure': True,
         'proxy': None,
         'socket_timeout': '45',
-        'bidi_workaround': None,
-        'debug_printtraffic': None,
+        'bidi_workaround': False,
+        'debug_printtraffic': False,
         'prefer_ffmpeg': True,
         'include_ads': False,
         'default_search': '',
@@ -118,10 +120,13 @@ def Parse( url ):
         'external_downloader_args': None,
         'postprocessor_args': None,
         'cn_verification_proxy': [],
+
+        'logger' : logging.getLogger()
     }
 
     with YoutubeDL(ydl_opts) as ydl:
         all = ydl.extract_info( url, download=False, process=False)
+        assert all != None, ' 解析失败，无法找到视频信息'
         return convert.Convert( all )
     return None
 
