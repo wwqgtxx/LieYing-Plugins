@@ -24,6 +24,9 @@
     <Content Include="YtDown\tox.ini" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="main.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="run.py">
       <SubType>Code</SubType>
     </Compile>
