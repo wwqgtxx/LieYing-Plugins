@@ -4,3 +4,4 @@
 
 *.pyc
 /youtube-dl-host/TestResults
+/youtube-dl-host/.vs/*.*

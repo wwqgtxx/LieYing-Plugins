@@ -112,6 +112,15 @@ if __name__ == '__main__':
 
         'logger' : logging.getLogger()
     }
+
+   downProxy = None
+   if 'youtube' in sys.argv[1]:
+       ydl_opts['proxy'] = '127.0.0.1:8787'
+       downProxy = {'host' : '127.0.0.1', 'port' : 8787 }
+
    with YoutubeDL(ydl_opts) as ydl:
        all = ydl.extract_info(sys.argv[1], download=False, process=False)
+       if isinstance(all,dict):
+           all['downProxy'] = downProxy
+
        print(json.dumps(all))
