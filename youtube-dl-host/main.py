@@ -120,7 +120,7 @@ if __name__ == '__main__':
 
    with YoutubeDL(ydl_opts) as ydl:
        all = ydl.extract_info(sys.argv[1], download=False, process=False)
+       all = ydl.process_ie_result(all, False )
        if isinstance(all,dict):
-           all['downProxy'] = downProxy
-
-       print(json.dumps(all))
+           all['downProxy'] = downProxy      
+       print(json.dumps(all,ensure_ascii=True))

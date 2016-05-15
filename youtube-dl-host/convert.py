@@ -133,6 +133,8 @@ def convertPlaylist( info ):
     data = []
     index = 1
     for one in entries:
+        if one == None:
+            continue
         data.append({
             'url' : one.get('url'),
             'no' : one.get('ie_key','') or str(index)
